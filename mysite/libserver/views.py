@@ -5,8 +5,8 @@ from django.http import JsonResponse
 
 # Create your views here.
 def test(request):
-	return JsonResponse({'foo' : 'bar'})
-	# return render(request , 'libserver/index.html' , { })
+	return render(request , 'libserver/index.html' , { })	
+	# return JsonResponse({'foo' : 'bar'})
 
 def myfriend(request, p_n):
 	# image_data = open("images/Adi2612.jpeg", "rb").read()
