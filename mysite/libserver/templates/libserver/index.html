@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>AJax ki ...</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<style type="text/css">
+
+		.left_side {
+			width: 400px;
+			height: 100%;
+			float: left;
+
+			/*margin-left: 0px;*/
+			background-color: #DAF7F3;
+		}
+
+		.same {
+			background-color: #DAF7F3;
+			width: 300px;
+			height: 300px;
+			margin: 5px;
+			display: inline-block;
+
+		}
+	</style>
+</head>
+<body>
+<div class="left_side">
+	
+</div>
+<div class="main">
+	<div class="same" id="content-11">
+	</div>
+	<div class="same" id="content-12">
+	</div>			
+	<div class="same" id="content-13">
+	</div>
+	<br>
+	<!-- row 1 end -->
+	<div class="same" id="content-21">
+	</div>
+	<div class="same" id="content-22">
+	</div>			
+	<div class="same" id="content-23">
+	</div>
+	<br>
+	<!-- row 2 end -->
+	<div class="same" id="content-31">
+	</div>
+	<div class="same" id="content-32">
+	</div>			
+	<div class="same" id="content-33">
+	</div>
+	<br>
+	<!-- row 3 ends -->
+</div>
+<button id="some_">Click me to change</button>
+<div class="right_side">
+</div>
+</body>
+<script type="text/javascript">
+var xx = 0;
+function do_it_as_it_is(x)
+{
+	for(var i = 1; i <=3 ; i++)
+	{
+		for(var j = 1; j <= 3 ; j++)
+		{
+			var d = "content-" + i + j;
+			$.ajax(
+				{
+	  				url: "myfriend/" + d,
+	  				cache: true,
+	  				async : false,
+	  				// data : { x },
+	  				success: function(html){
+	  					$("#" + d).empty();
+	    				$("#" + d).append(html);
+	  					}	
+				});
+		}
+	}
+}
+
+
+$(document).ready(function()
+{
+	//do_it_as_it_is(0);
+	xx = xx + 1;
+	$("#some_").click(function(){
+
+		do_it_as_it_is(xx);
+
+	});
+});
+
+</script>
+</html>
