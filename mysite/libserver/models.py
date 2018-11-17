@@ -4,6 +4,7 @@ from django.utils import timezone
 
 class Product(models.Model):
 	user_id = models.ForeignKey(settings.AUTH_USER_MODEL , on_delete=models.CASCADE)
+	image_url = models.CharField(max_length = 200)
 	item_name = models.CharField(max_length=200)
 	quantity = models.IntegerField()
 	created_date = models.DateTimeField(default=timezone.now)
@@ -23,7 +24,6 @@ class Product(models.Model):
             "item_name" : self.item_name,
             "quantity" : self.quantity,
             "place" : self.place
-
         }	  
 
 # class User_details(models.Model):
