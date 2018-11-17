@@ -2,12 +2,29 @@ from django.db import models
 from django.conf import settings
 from django.utils import timezone
 
-# class User(models.Model):
-# 	user_id = models.ForeignKey(settings.AUTH_USER_MODEL , on_delete=models.CASCADE)
-# 	item_name = models.CharField(max_length=200)
-#     quantity = models.
-#     created_date = models.DateTimeField(default=timezone.now)
-#     published_date = models.DateTimeField(blank=True, null=True)
+class Product(models.Model):
+	user_id = models.ForeignKey(settings.AUTH_USER_MODEL , on_delete=models.CASCADE)
+	item_name = models.CharField(max_length=200)
+	quantity = models.IntegerField()
+	created_date = models.DateTimeField(default=timezone.now)
+	published_date = models.DateTimeField(blank=True, null=True)
+	place = models.CharField(max_length=200)
+
+	def __str__(self):
+		return self.item_name
+
+	def Publish(self):
+		self.published_date = timezone.now()
+		self.save()  
+
+	def as_dict(self):
+		return {
+            "id": self.user_id,
+            "item_name" : self.item_name,
+            "quantity" : self.quantity,
+            "place" : self.place
+
+        }	  
 
 # class User_details(models.Model):
 # ''' 
